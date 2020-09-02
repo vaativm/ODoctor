@@ -1,0 +1,45 @@
+﻿@page
+@model LoginModel
+
+@{
+    Layout = "_AuthLayout";
+    ViewData["Title"] = "Log in";
+
+}
+
+<form class="form-signin mx-auto py-0" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label class="text-left" asp-for="UserLoginViewModel.Email"></label>
+        <input asp-for="UserLoginViewModel.Email" class="form-control" />
+        <span asp-validation-for="UserLoginViewModel.Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label class="text-left" asp-for="UserLoginViewModel.Password"></label>
+        <input asp-for="UserLoginViewModel.Password" class="form-control" />
+        <span asp-validation-for="UserLoginViewModel.Password" class="text-danger"></span>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="checkbox">
+                    <label asp-for="UserLoginViewModel.RememberMe">
+                        <input asp-for="UserLoginViewModel.RememberMe" />
+                        @Html.DisplayNameFor(m => m.UserLoginViewModel.RememberMe)
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <p>
+                    <a id="forgot-password" asp-page="./ForgotPassword">Forgot password?</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary btn-block m-0" type="submit">Sign in</button>
+    <div class="small pt-2">
+        Dont have account? <a asp-area="Identity" asp-page="Register">Register</a>
+    </div>
+</form>

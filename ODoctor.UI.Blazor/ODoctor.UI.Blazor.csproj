@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ODoctor.Core\ODoctor.Core.csproj" />
+    <ProjectReference Include="..\ODoctor.Infrastructure\ODoctor.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

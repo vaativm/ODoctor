@@ -1,0 +1,24 @@
+﻿@page
+@model ODoctor.UI.Razor.Pages.Search.DoctorsModel
+@{
+    Layout = "_MainLayout";
+    ViewBag.Title = "Doctors";
+}
+
+<div class="doctorsProfile">
+    <h2>@Model.ClinicDoctorsViewModel.ClinicName</h2>
+    <div class="card-deck">
+        @foreach(var profile in Model.ClinicDoctorsViewModel.DoctorProfiles)
+        {
+            <div class="card">
+                <div class="card-body mb-0">
+                    <h5 class="card-title">@profile.FullName</h5>
+                    <p class="card-text mb-0">@profile.Speciality</p>
+                </div>
+                <div class="card-footer border-top-0 bg-white">
+                    <a asp-route-doctorId="@profile.Id" asp-route-clinicId="@Model.ClinicDoctorsViewModel.ClinicId" asp-page="/Calendar/Index" class="text-uppercase ">Book appointment</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

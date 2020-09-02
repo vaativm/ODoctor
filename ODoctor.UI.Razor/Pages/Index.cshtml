@@ -1,0 +1,31 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h1 class="cover-heading">What are you looking for</h1>
+
+<div class="card-columns pt-4">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">04008822</h3>
+            <p class="card-text">Current token number</p>
+            <a class="btn btn-secondary" href="#" role="button">View details »</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">Doctors</h3>
+            <p class="card-text">Book appointment</p>
+            <a class="btn btn-secondary" asp-page="/Search/Index" role="button">Book »</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">Chat</h3>
+            <p class="card-text">Chat with top doctors</p>
+            <a class="btn btn-secondary" href="#" role="button">Chat »</a>
+        </div>
+    </div>
+</div>

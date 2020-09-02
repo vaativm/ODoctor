@@ -1,0 +1,58 @@
+﻿@page 
+@model ODoctor.UI.Razor.Pages.Search.IndexModel
+ 
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_MainLayout";
+}
+
+<div class="search">
+    <form>
+        <button type="submit" class="btn btn-primary">Search</button>
+        <div class="row my-4">
+            <div class="col-md-6">
+                <div class="form-group multi-select-wrapper">
+                    <select class="multiselect-ui form-control" multiple="multiple" asp-for="SelectedLocations" asp-items="Model.Counties">
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group multi-select-wrapper">
+                    <select class="multiselect-ui form-control" multiple="multiple" asp-for="SelectedSpecialities" asp-items="Model.Specialities">
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="card-deck mt-4">
+        @foreach (var clinic in Model.Clinics)
+        {
+            if (@clinic.ClinicSpecialities.Count() != 0)
+            {
+                <div class="card">
+                    <div class="card-body pb-0">
+                        <h5 class="card-title" asp-page="">@clinic.Name</h5>
+                        @foreach (var specialityGroup in @clinic.ClinicSpecialities.GroupBy(s => s.Name))
+                        {
+                            <p class="card-text mb-0">@specialityGroup.Count() @specialityGroup.Key@String.Concat("(s)")</p>
+                        }
+                    </div>
+                    @{
+                        HashSet<int> specialitySet = new HashSet<int>();
+
+                        @foreach (var speciality in @clinic.ClinicSpecialities)
+                        {
+                            specialitySet.Add(speciality.Id);
+                        }
+
+                        var specialities  =  string.Join(",", specialitySet);
+
+                        <div class="card-footer border-top-0 bg-white">
+                            <a class="btn text-uppercase" asp-page="/Search/Doctors" asp-route-specialities="@specialities" asp-route-clinicId="@clinic.Id">View doctors</a>
+                        </div>
+                    }
+                </div>
+            }
+        }
+    </div>
+ </div>

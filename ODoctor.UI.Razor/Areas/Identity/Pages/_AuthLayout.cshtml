@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "_BaseLayout";
+}
+
+<div class="cover-container d-flex w-100 h-100 p-4 mx-auto flex-column text-center">
+    <header class="mb-auto">
+        <div class="inner">
+            <nav class="nav justify-content-center">
+                <a class="nav-link" asp-page="/Index">Home</a>
+            </nav>
+        </div>
+    </header>
+    <div class="mx-auto mb-0 mt-auto">
+        <div class="navbar-brand">ODoctor</div>
+    </div>
+    <main role="main" class="inner my-auto">
+        @RenderBody()
+    </main>
+    <partial name="_FooterPartial" />
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

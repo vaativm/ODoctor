@@ -1,0 +1,35 @@
+﻿@page
+@model ODoctor.UI.Razor.Pages.Calendar.IndexModel
+@{
+    ViewData["Title"] = "Calendar";
+    Layout = "_SecuredLayout";
+}
+
+<div class="doctor-calendar">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">@Model.DoctorCalendar.DoctorName</h2>
+            <p class="card-text small">@Model.DoctorCalendar.ClinicName</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <select class="form-control" asp-for="@Model.DoctorCalendar.ClinicId" asp-items="@Model.DoctorCalendar.Services">
+
+        </select>
+    </div>
+    <div class="timeslot">
+        @foreach(var dates in @Model.DoctorCalendar.Timeslots.GroupBy(t=>t.Date))
+        {
+            foreach(var date in dates)
+            {
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">@date.Date</h3>
+                        <p class="card-text">@date.StartTime - @Html.FormatValue(@date.EndTime, "{0:HH:MM}")</p>
+                    </div>
+                </div>
+            }  
+        }
+    </div>
+</div>
+

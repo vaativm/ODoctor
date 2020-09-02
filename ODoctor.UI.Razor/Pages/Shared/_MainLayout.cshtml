@@ -1,0 +1,19 @@
+﻿@{ 
+    Layout = "_BaseLayout";
+}
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column text-center">
+    <header class="mb-auto">
+        <div class="inner">
+            <div class="navbar-brand">ODoctor</div>
+            <nav class="nav justify-content-center">
+                <partial name="_LoginPartial" />
+            </nav>
+        </div>
+    </header>
+
+    <main role="main" class="inner">
+        @RenderBody()
+    </main>
+    <partial name="_FooterPartial" />
+</div>
